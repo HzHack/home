@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مواقعي الشخصية</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a1e23 0%, #0f1217 100%);
+            color: #f0f0f0;
+            min-height: 100vh;
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            margin: 30px 0 50px;
+        }
+        
+        .logo {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 35px;
+            font-weight: bold;
+            box-shadow: 0 0 20px rgba(37, 117, 252, 0.5);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+            color: #fff;
+        }
+        
+        .tagline {
+            font-size: 1.1rem;
+            opacity: 0.8;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .websites-list {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+        
+        .website-item {
+            background: rgba(30, 35, 40, 0.7);
+            border-radius: 15px;
+            padding: 25px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .website-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(37, 117, 252, 0.3);
+        }
+        
+        .website-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(106, 147, 255, 0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 25px;
+            color: #6a93ff;
+            flex-shrink: 0;
+        }
+        
+        .website-content {
+            flex: 1;
+        }
+        
+        .website-title {
+            font-size: 1.4rem;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #fff;
+        }
+        
+        .website-description {
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+            color: #ccc;
+            line-height: 1.5;
+        }
+        
+        .website-link {
+            display: inline-block;
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .website-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(37, 117, 252, 0.4);
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            font-size: 0.95rem;
+            opacity: 0.7;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        @media (max-width: 600px) {
+            .website-item {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .website-icon {
+                margin-bottom: 15px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">م</div>
+            <h1>مواقعي الشخصية</h1>
+            <p class="tagline">مجموعة من المواقع التي قمت بتطويرها</p>
+        </header>
+        
+        <div class="websites-list">
+            <div class="website-item">
+                <div class="website-icon">
+                    <i class="fab fa-snapchat-ghost"></i>
+                </div>
+                <div class="website-content">
+                    <h3 class="website-title">سناب بلس</h3>
+                    <p class="website-description">تطبيق سناب بلس مع ميزات إضافية وتحسينات لتجربة أفضل</p>
+                    <a href="https://hzhack.github.io/snap-hz/" class="website-link" target="_blank">زيارة الموقع</a>
+                </div>
+            </div>
+            
+            <div class="website-item">
+                <div class="website-icon">
+                    <i class="fas fa-mobile-alt"></i>
+                </div>
+                <div class="website-content">
+                    <h3 class="website-title">تطبيقات بلس للايقونات</h3>
+                    <p class="website-description">مجموعة من التطبيقات المحسنة مع أيقونات مخصصة لتجربة فريدة</p>
+                    <a href="https://hzhack.github.io/ioss/" class="website-link" target="_blank">زيارة الموقع</a>
+                </div>
+            </div>
+            
+            <div class="website-item">
+                <div class="website-icon">
+                    <i class="fab fa-android"></i>
+                </div>
+                <div class="website-content">
+                    <h3 class="website-title">تطبيقات بلس للاندرويد</h3>
+                    <p class="website-description">تطبيقات اندرويد محسنة مع ميزات إضافية وأداء أفضل</p>
+                    <a href="https://hzhack.github.io/Android/" class="website-link" target="_blank">زيارة الموقع</a>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>جميع الحقوق محفوظة &copy; <span id="current-year"></span> - مواقعي الشخصية</p>
+        </footer>
+    </div>
+    
+    <script>
+        // إضافة السنة الحالية في الفوتر
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
