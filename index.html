@@ -62,6 +62,12 @@
             object-fit: cover;
             border: 3px solid rgba(255, 255, 255, 0.1);
             box-shadow: 0 0 25px rgba(37, 117, 252, 0.5);
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3.5rem;
         }
         
         .profile-border {
@@ -236,10 +242,12 @@
         <header>
             <div class="profile-container">
                 <div class="profile-border"></div>
-                <img src="https://k.top4top.io/p_3452u4opr1.jpg" alt="صورة شخصية" class="profile-img">
+                <div class="profile-img">
+                    <i class="fas fa-user"></i>
+                </div>
             </div>
             <h1>Hz Bahkali</h1>
-            <p class="tagline">ارحب نورت الموقع والله</p>
+            <p class="tagline">مرحباً بك في موقعي الشخصي</p>
         </header>
         
         <div class="websites-list">
@@ -279,7 +287,7 @@
             
             <div class="website-item">
                 <div class="website-icon">
-                    <i class="fab fa-Android-alt"></i>
+                    <i class="fab fa-android"></i> <!-- تم التصحيح هنا -->
                 </div>
                 <div class="website-content">
                     <h3 class="website-title">
@@ -296,7 +304,7 @@
 
             <div class="website-item">
                 <div class="website-icon">
-                    <i class="fab fa-book-alt"></i>
+                    <i class="fas fa-book"></i> <!-- تم التصحيح هنا -->
                 </div>
                 <div class="website-content">
                     <h3 class="website-title">
@@ -311,6 +319,24 @@
                 </div>
             </div>
             
+            <!-- إضافة مشروع جديد -->
+            <div class="website-item">
+                <div class="website-icon">
+                    <i class="fas fa-laptop-code"></i>
+                </div>
+                <div class="website-content">
+                    <h3 class="website-title">
+                        <i class="fas fa-link"></i>
+                        مشاريعي البرمجية
+                    </h3>
+                    <p class="website-description">مجموعة من المشاريع البرمجية والتطبيقات التي قمت بتطويرها</p>
+                    <a href="#" class="website-link" target="_blank">
+                        <i class="fas fa-external-link-alt"></i>
+                        تصفح المشاريع
+                    </a>
+                </div>
+            </div>
+            
         </div>
         
         <footer>
@@ -321,6 +347,17 @@
     <script>
         // إضافة السنة الحالية في الفوتر
         document.getElementById('current-year').textContent = new Date().getFullYear();
+        
+        // تأثيرات تفاعلية بسيطة
+        document.querySelectorAll('.website-link').forEach(link => {
+            link.addEventListener('mouseenter', function() {
+                this.querySelector('i').style.transform = 'rotate(45deg)';
+            });
+            
+            link.addEventListener('mouseleave', function() {
+                this.querySelector('i').style.transform = 'rotate(0deg)';
+            });
+        });
     </script>
 </body>
 </html>
