@@ -3,37 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hz Bahkali</title>
+    <title>مشاريع Hz Bahkali</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Cairo', sans-serif; /* الخط الجديد */
         }
         
         body {
-            background: linear-gradient(135deg, #1a1e23 0%, #0f1217 100%);
+            background: linear-gradient(135deg, #0f1217 0%, #1a1e23 100%);
             color: #f0f0f0;
             min-height: 100vh;
             padding: 20px;
-            position: relative;
             overflow-x: hidden;
         }
-        
-        /* تأثيرات الخلفية */
+
+        /* خلفية متحركة خفيفة */
         body::before {
             content: "";
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(circle at 10% 20%, rgba(106, 17, 203, 0.1) 0%, transparent 20%),
-                radial-gradient(circle at 90% 80%, rgba(37, 117, 252, 0.1) 0%, transparent 20%);
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(106,17,203,0.15) 0%, transparent 60%);
+            animation: bgMove 20s infinite linear;
             z-index: -1;
+            pointer-events: none;
         }
         
         .container {
@@ -44,14 +45,13 @@
         
         header {
             text-align: center;
-            margin: 20px 0 40px;
-            position: relative;
+            margin: 40px 0 60px;
         }
         
         .profile-container {
-            width: 150px;
-            height: 150px;
-            margin: 0 auto 20px;
+            width: 160px;
+            height: 160px;
+            margin: 0 auto 25px;
             position: relative;
         }
         
@@ -60,176 +60,153 @@
             height: 100%;
             border-radius: 50%;
             object-fit: cover;
-            border: 3px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 0 25px rgba(37, 117, 252, 0.5);
-            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 3.5rem;
+            border: 4px solid #1a1e23;
+            box-shadow: 0 0 30px rgba(106, 17, 203, 0.4);
+            position: relative;
+            z-index: 2;
         }
         
-        .profile-border {
+        /* تأثير الدوران حول الصورة */
+        .profile-glow {
             position: absolute;
-            top: -5px;
-            left: -5px;
-            right: -5px;
-            bottom: -5px;
+            top: -5px; left: -5px; right: -5px; bottom: -5px;
             border-radius: 50%;
-            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
-            z-index: -1;
-            animation: rotate 10s linear infinite;
+            background: linear-gradient(45deg, #6a11cb, #2575fc, #ff416c);
+            z-index: 1;
+            animation: rotate 3s linear infinite;
+            filter: blur(2px);
         }
         
         h1 {
             font-size: 2.5rem;
             margin-bottom: 10px;
-            letter-spacing: 1px;
-            color: #fff;
-            text-shadow: 0 0 10px rgba(37, 117, 252, 0.5);
+            background: linear-gradient(to right, #fff, #a0c4ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
         
         .tagline {
             font-size: 1.1rem;
-            opacity: 0.8;
-            max-width: 500px;
-            margin: 0 auto;
-            background: rgba(30, 35, 40, 0.5);
-            padding: 8px 20px;
-            border-radius: 30px;
+            color: #ccc;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 8px 25px;
+            border-radius: 50px;
             display: inline-block;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
         
+        /* القائمة الموحدة - تم إصلاح الخطأ هنا */
         .websites-list {
             display: flex;
             flex-direction: column;
-            gap: 25px;
+            gap: 20px; /* المسافة ستعمل الآن بشكل صحيح */
             margin-bottom: 50px;
         }
         
         .website-item {
-            background: rgba(30, 35, 40, 0.7);
-            border-radius: 15px;
-            padding: 25px;
+            background: rgba(30, 35, 45, 0.6);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 20px;
             display: flex;
             align-items: center;
             gap: 20px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             overflow: hidden;
         }
         
+        .website-item:hover {
+            transform: translateY(-5px);
+            background: rgba(40, 45, 60, 0.8);
+            border-color: rgba(106, 147, 255, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* شريط جانبي ملون لكل بطاقة */
         .website-item::before {
             content: "";
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 5px;
+            top: 0; right: 0; /* في العربية الشريط يكون يمين */
+            width: 4px;
             height: 100%;
             background: linear-gradient(to bottom, #6a11cb, #2575fc);
-        }
-        
-        .website-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(37, 117, 252, 0.3);
-            background: rgba(35, 40, 45, 0.8);
+            opacity: 0.7;
         }
         
         .website-icon {
-            width: 60px;
-            height: 60px;
-            background: rgba(106, 147, 255, 0.1);
-            border-radius: 12px;
+            width: 65px;
+            height: 65px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 25px;
-            color: #6a93ff;
+            font-size: 28px;
+            color: #a0c4ff;
             flex-shrink: 0;
-            transition: all 0.3s ease;
+            transition: 0.4s;
         }
         
         .website-item:hover .website-icon {
-            background: rgba(106, 147, 255, 0.2);
-            transform: scale(1.1);
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: #fff;
+            transform: scale(1.1) rotate(-5deg);
         }
         
-        .website-content {
-            flex: 1;
-        }
+        .website-content { flex: 1; }
         
         .website-title {
-            font-size: 1.4rem;
-            margin-bottom: 8px;
-            font-weight: 600;
+            font-size: 1.3rem;
+            margin-bottom: 5px;
             color: #fff;
             display: flex;
             align-items: center;
             gap: 10px;
         }
         
-        .website-title i {
-            color: #6a93ff;
-            font-size: 0.8em;
-        }
-        
         .website-description {
-            font-size: 0.95rem;
+            font-size: 0.9rem;
+            color: #aaa;
+            line-height: 1.6;
             margin-bottom: 15px;
-            color: #ccc;
-            line-height: 1.5;
         }
         
         .website-link {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
-            color: white;
-            padding: 8px 20px;
-            border-radius: 50px;
-            text-decoration: none;
+            background: transparent;
+            color: #6a93ff;
+            font-weight: 700;
             font-size: 0.9rem;
-            font-weight: 500;
-            transition: all 0.3s ease;
+            text-decoration: none;
+            transition: 0.3s;
+            padding: 5px 0;
         }
-		  .website-link:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(37, 117, 252, 0.4);
-            background: linear-gradient(135deg, #7a21db 0%, #3785fc 100%);
+        
+        .website-link:hover {
+            color: #fff;
+            padding-right: 10px; /* حركة بسيطة عند التحويم */
         }
-		    footer {
+        
+        footer {
             text-align: center;
             padding: 30px 0;
-            font-size: 0.95rem;
-            opacity: 0.7;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #666;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
         }
-		  @media (max-width: 600px) {
-            .website-item {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            .website-icon {
-                margin-bottom: 15px;
-            }
-            
-            h1 {
-                font-size: 2rem;
-            }
-            
-            .website-title {
-                justify-content: center;
-            }
-        }
-		 /* Animations */
-        @keyframes rotate {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+
+        @keyframes rotate { 100% { transform: rotate(360deg); } }
+        @keyframes bgMove { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        @media (max-width: 600px) {
+            .website-item { flex-direction: column; text-align: center; padding: 30px 20px; }
+            .website-item::before { width: 100%; height: 4px; top: 0; right: 0; }
+            .website-icon { margin-bottom: 15px; }
+            .website-link:hover { padding-right: 0; letter-spacing: 1px; }
         }
     </style>
 </head>
@@ -237,198 +214,121 @@
     <div class="container">
         <header>
             <div class="profile-container">
-                <div class="profile-border"></div>
-                <div class="profile-img">
-                   <i class="fas fa-home"></i>
-                </div>
+                <div class="profile-glow"></div>
+                <img src="https://k.top4top.io/p_3452u4opr1.jpg" alt="Hz Bahkali" class="profile-img">
             </div>
             <h1>Hz Bahkali</h1>
-            <p class="tagline">ارحبو منورين الموقع والله</p>
+            <p class="tagline">أدوات، برمجيات، وحلول تقنية</p>
         </header>
 
-
-
-<div class="websites-list">
-            <div class="website-item">
-                <div class="website-icon">
-                    <i class="fas fa-folder"></i>
-                </div>
-                <div class="website-content">
-                    <h3 class="website-title">
-                        <i class="fas fa-link"></i>
-                        فحص الملفات ipa/apk
-                    </h3>
-                    <p class="website-description">PlusInspector Pro</p>
-                    <a href="https://hzhack.github.io/apk/" class="website-link" target="_blank">
-                        <i class="fas fa-external-link-alt"></i>
-                        زيارة الموقع
-                    </a>
-                </div>
-			</div>
-
-
-		
-<div class="websites-list">
-            <div class="website-item">
-                <div class="website-icon">
-                    <i class="fas fa-mobile"></i>
-                </div>
-                <div class="website-content">
-                    <h3 class="website-title">
-                        <i class="fas fa-link"></i>
-                        فحص الجوال
-                    </h3>
-                    <p class="website-description">افحص قوة جوالك و الشبكة و دقة الشاشه </p>
-                    <a href="https://hzhack.github.io/Info/" class="website-link" target="_blank">
-                        <i class="fas fa-external-link-alt"></i>
-                        زيارة الموقع
-                    </a>
-                </div>
-			</div>
-
-		
-         <div class="websites-list">
-            <div class="website-item">
-                <div class="website-icon">
-                    <i class="far fa-comment-alt"></i>
-                </div>
-                <div class="website-content">
-                    <h3 class="website-title">
-                        <i class="fas fa-link"></i>
-                        اداة توليد ايميلات
-                    </h3>
-                    <p class="website-description">اداة توليد اميلات تجيك رسايل على اميلك الاصلي .</p>
-                    <a href="https://hzhack.github.io/emil/" class="website-link" target="_blank">
-                        <i class="fas fa-external-link-alt"></i>
-                        زيارة الموقع
-                    </a>
-                </div>
-            </div>
-
-
-
-		
-         <div class="websites-list">
-            <div class="website-item">
-                <div class="website-icon">
-                    <i class="fas fa-tv"></i>
-                </div>
-                <div class="website-content">
-                    <h3 class="website-title">
-                        <i class="fas fa-link"></i>
-                        خاص للقيمنق
-                    </h3>
-                    <p class="website-description">افحص قوة القطع الي تبي تشتريها او الي مركبها على جهازك او اذا حاب تطور قطع</p>
-                    <a href="https://hzhack.github.io/Pc/" class="website-link" target="_blank">
-                        <i class="fas fa-external-link-alt"></i>
-                        زيارة الموقع
-                    </a>
-                </div>
-            </div>
-		
         <div class="websites-list">
+            
             <div class="website-item">
-                <div class="website-icon">
-                    <i class="fab fa-snapchat-ghost"></i>
-                </div>
+                <div class="website-icon"><i class="fas fa-shield-alt"></i></div>
                 <div class="website-content">
-                    <h3 class="website-title">
-                        <i class="fas fa-link"></i>
-                        سناب بلس
-                    </h3>
-                    <p class="website-description">تطبيق سناب بلس مع ميزات إضافية وتحسينات لتجربة أفضل، إصدار معدل ومحسّن من تطبيق سناب شات الأصلي</p>
+                    <h3 class="website-title">فحص الملفات (IPA/APK)</h3>
+                    <p class="website-description">أداة PlusInspector Pro لفحص الملفات والتأكد من سلامتها.</p>
+                    <a href="https://hzhack.github.io/apk/" class="website-link" target="_blank">
+                        زيارة الأداة <i class="fas fa-arrow-left"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="website-item">
+                <div class="website-icon"><i class="fas fa-mobile-alt"></i></div>
+                <div class="website-content">
+                    <h3 class="website-title">فحص شامل للجوال</h3>
+                    <p class="website-description">تحليل قوة الجهاز، الشبكة، دقة الشاشة والمواصفات.</p>
+                    <a href="https://hzhack.github.io/Info/" class="website-link" target="_blank">
+                        بدء الفحص <i class="fas fa-arrow-left"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="website-item">
+                <div class="website-icon"><i class="fas fa-envelope-open-text"></i></div>
+                <div class="website-content">
+                    <h3 class="website-title">مولد الإيميلات المؤقتة</h3>
+                    <p class="website-description">توليد إيميلات وهمية مربوطة ببريدك الأصلي للخصوصية.</p>
+                    <a href="https://hzhack.github.io/emil/" class="website-link" target="_blank">
+                        إنشاء إيميل <i class="fas fa-arrow-left"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="website-item">
+                <div class="website-icon"><i class="fas fa-gamepad"></i></div>
+                <div class="website-content">
+                    <h3 class="website-title">مستشار القيمنق (PC)</h3>
+                    <p class="website-description">فحص توافق قطع الكمبيوتر واقتراح تطويرات للأداء.</p>
+                    <a href="https://hzhack.github.io/Pc/" class="website-link" target="_blank">
+                        افحص جهازك <i class="fas fa-arrow-left"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="website-item">
+                <div class="website-icon"><i class="fab fa-snapchat-ghost"></i></div>
+                <div class="website-content">
+                    <h3 class="website-title">سناب شات بلس</h3>
+                    <p class="website-description">نسخة معدلة بميزات حصرية وتحسينات في الأداء.</p>
                     <a href="https://hzhack.github.io/snap-hz/" class="website-link" target="_blank">
-                        <i class="fas fa-external-link-alt"></i>
-                        زيارة الموقع
+                        تحميل النسخة <i class="fas fa-arrow-left"></i>
                     </a>
                 </div>
             </div>
-            
+
             <div class="website-item">
-                <div class="website-icon">
-                    <i class="fas fa-mobile-alt"></i>
-                </div>
+                <div class="website-icon"><i class="fab fa-apple"></i></div>
                 <div class="website-content">
-                    <h3 class="website-title">
-                        <i class="fas fa-link"></i>
-                        تطبيقات بلس للايفون
-                    </h3>
-                    <p class="website-description">مجموعة من التطبيقات المحسنة مع أيقونات مخصصة لتجربة فريدة على أجهزة iOS</p>
+                    <h3 class="website-title">متجر تطبيقات بلس (iOS)</h3>
+                    <p class="website-description">مكتبة تطبيقات معدلة ومحسنة لأجهزة الآيفون.</p>
                     <a href="https://hzhack.github.io/ioss/" class="website-link" target="_blank">
-                        <i class="fas fa-external-link-alt"></i>
-                        زيارة الموقع
+                        تصفح المتجر <i class="fas fa-arrow-left"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="website-item">
+                <div class="website-icon"><i class="fab fa-android"></i></div>
+                <div class="website-content">
+                    <h3 class="website-title">متجر تطبيقات بلس (Android)</h3>
+                    <p class="website-description">أفضل التطبيقات المعدلة والمدفوعة مجاناً للاندرويد.</p>
+                    <a href="https://hzhack.github.io/Android/" class="website-link" target="_blank">
+                        تصفح المتجر <i class="fas fa-arrow-left"></i>
                     </a>
                 </div>
             </div>
             
             <div class="website-item">
-                <div class="website-icon">
-                    <i class="fab fa-android"></i> 
-                </div>
+                <div class="website-icon"><i class="fas fa-mosque"></i></div>
                 <div class="website-content">
-                    <h3 class="website-title">
-                        <i class="fas fa-link"></i>
-                        تطبيقات بلس للاندرويد
-                    </h3>
-                    <p class="website-description">تطبيقات اندرويد محسنة مع ميزات إضافية وأداء أفضل لجميع الأجهزة</p>
-                    <a href="https://hzhack.github.io/Android/" class="website-link" target="_blank">
-                        <i class="fas fa-external-link-alt"></i>
-                        زيارة الموقع
-                    </a>
-                </div>
-            </div>
-			 <div class="website-item">
-                <div class="website-icon">
-                    <i class="fas fa-kaaba"></i> 
-                </div>
-                <div class="website-content">
-                    <h3 class="website-title">
-                        <i class="fas fa-link"></i>
-                        أذكار
-                    </h3>
-                    <p class="website-description"> يعرض لك اوقات الصلاة حسب مدينة الدمام ويعطيك اذكار يومية</p>
+                    <h3 class="website-title">مواقيت وأذكار</h3>
+                    <p class="website-description">مواقيت الصلاة في الدمام مع حصن المسلم.</p>
                     <a href="https://hzhack.github.io/muslim/" class="website-link" target="_blank">
-                        <i class="fas fa-external-link-alt"></i>
-                        زيارة الموقع
+                        عرض المواقيت <i class="fas fa-arrow-left"></i>
                     </a>
                 </div>
             </div>
-			 <div class="website-item">
-                <div class="website-icon">
-                    <i class="fas fa-microchip"></i>
-                </div>
+
+            <div class="website-item">
+                <div class="website-icon"><i class="fas fa-unlock-alt"></i></div>
                 <div class="website-content">
-                    <h3 class="website-title">
-                        <i class="fas fa-link"></i>
-                        التحقق من دعم الجلبريك
-                    </h3>
-                    <p class="website-description"> يتحقق اذا كان جوالك يدعم الجلبريك ولا مايدعم </p>
+                    <h3 class="website-title">فحص دعم الجلبريك</h3>
+                    <p class="website-description">تأكد من إمكانية تثبيت الجلبريك على إصدار جهازك.</p>
                     <a href="https://hzhack.github.io/jil/" class="website-link" target="_blank">
-                        <i class="fas fa-external-link-alt"></i>
-                        زيارة الموقع
+                        افحص الآن <i class="fas fa-arrow-left"></i>
                     </a>
                 </div>
-				     
-            
-        </div>
-		 <footer>
+            </div>
+
+        </div> <footer>
             <p>جميع الحقوق محفوظة &copy; <span id="current-year"></span> - Hz Bahkali</p>
         </footer>
     </div>
     
     <script>
-        // إضافة السنة الحالية في الفوتر
         document.getElementById('current-year').textContent = new Date().getFullYear();
-		 // تأثيرات تفاعلية بسيطة
-        document.querySelectorAll('.website-link').forEach(link => {
-            link.addEventListener('mouseenter', function() {
-                this.querySelector('i').style.transform = 'rotate(45deg)';
-            });
-            
-            link.addEventListener('mouseleave', function() {
-                this.querySelector('i').style.transform = 'rotate(0deg)';
-            });
-        });
     </script>
-	</body>
+</body>
 </html>
