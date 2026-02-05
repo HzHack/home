@@ -17,7 +17,7 @@
         
         html, body {
             width: 100%;
-            overflow-x: hidden; /* يمنع الحركة الجانبية تماماً */
+            overflow-x: hidden;
             margin: 0;
             padding: 0;
         }
@@ -30,10 +30,10 @@
             position: relative;
         }
 
-        /* إصلاح الخلفية المتحركة للجوال */
+        /* الخلفية المتحركة */
         body::before {
             content: "";
-            position: fixed; /* تغيير إلى fixed */
+            position: fixed;
             top: -50%;
             left: -50%;
             width: 200%;
@@ -48,7 +48,7 @@
             width: 100%;
             max-width: 800px;
             margin: 0 auto;
-            padding: 10px; /* تقليل الهوامش للجوال */
+            padding: 10px;
             position: relative;
             z-index: 1;
         }
@@ -59,7 +59,7 @@
         }
         
         .profile-container {
-            width: 150px; /* تصغير قليل للصورة */
+            width: 150px;
             height: 150px;
             margin: 0 auto 20px;
             position: relative;
@@ -210,7 +210,6 @@
         @keyframes rotate { 100% { transform: rotate(360deg); } }
         @keyframes bgMove { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
-        /* تعديلات خاصة للجوال لمنع الاهتزاز */
         @media (max-width: 600px) {
             .container { padding: 15px; }
             
@@ -246,23 +245,19 @@
             <p class="tagline">أدوات، برمجيات، وحلول تقنية</p>
         </header>
 
-#class="fas fa-shield-alt
-         <div class="websites-list">
+        <div class="websites-list">
             
             <div class="website-item">
-                <div class="website-icon"><i <i class="fa-utility-duo fa-semibold fa-microchip"></i>"></i></div>
+                <div class="website-icon"><i class="fas fa-microchip"></i></div>
                 <div class="website-content">
                     <h3 class="website-title">دكتاتور العمليات</h3>
-                    <p class="website-description">برنامج Process Freezer جمد العميات وكمل لعب.</p>
+                    <p class="website-description">برنامج Process Freezer جمد العمليات وكمل لعبك.</p>
                     <a href="https://hzhack.github.io/apk/" class="website-link" target="_blank">
-                        زيارة الأداة <i class="fas fa-arrow-left"></i>
+                     تحميل البرنامج <i class="fas fa-arrow-left"></i>
                     </a>
                 </div>
             </div>
 
-             
-        <div class="websites-list">
-            
             <div class="website-item">
                 <div class="website-icon"><i class="fas fa-shield-alt"></i></div>
                 <div class="website-content">
@@ -340,7 +335,7 @@
                 </div>
             </div>
             
-             <div class="website-item">
+            <div class="website-item">
                 <div class="website-icon"><i class="fas fa-mosque"></i></div>
                 <div class="website-content">
                     <h3 class="website-title">مواقيت وأذكار</h3>
@@ -351,7 +346,7 @@
                 </div>
             </div>
 
-             <div class="website-item">
+            <div class="website-item">
                 <div class="website-icon"><i class="fas fa-unlock-alt"></i></div>
                 <div class="website-content">
                     <h3 class="website-title">فحص دعم الجلبريك</h3>
