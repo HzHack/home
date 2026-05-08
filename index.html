@@ -4,9 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>مشاريع Hz Bahkali</title>
+    <meta name="description" content="أدوات، برمجيات، وحلول تقنية - مشاريع Hz Bahkali">
+    <link rel="shortcut icon" type="image/png" href="https://j.top4top.io/p_3452x15iw1.jpg">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <style>
         * {
             margin: 0;
@@ -14,7 +16,7 @@
             box-sizing: border-box;
             font-family: 'Cairo', sans-serif;
         }
-        
+
         html, body {
             width: 100%;
             overflow-x: hidden;
@@ -43,7 +45,7 @@
             z-index: -1;
             pointer-events: none;
         }
-        
+
         .container {
             width: 100%;
             max-width: 800px;
@@ -52,19 +54,51 @@
             position: relative;
             z-index: 1;
         }
-        
+
+        /* زر الرجوع للملف الشخصي */
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #a0c4ff;
+            padding: 10px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-bottom: 20px;
+        }
+
+        .back-btn:hover {
+            background: rgba(106, 147, 255, 0.15);
+            border-color: rgba(106, 147, 255, 0.3);
+            color: #fff;
+            transform: translateX(-5px);
+        }
+
+        .back-btn i {
+            transition: transform 0.3s ease;
+        }
+
+        .back-btn:hover i {
+            transform: translateX(-3px);
+        }
+
         header {
             text-align: center;
-            margin: 40px 0 50px;
+            margin: 20px 0 50px;
         }
-        
+
         .profile-container {
             width: 150px;
             height: 150px;
             margin: 0 auto 20px;
             position: relative;
         }
-        
+
         .profile-img {
             width: 100%;
             height: 100%;
@@ -75,7 +109,7 @@
             position: relative;
             z-index: 2;
         }
-        
+
         .profile-glow {
             position: absolute;
             top: -5px; left: -5px; right: -5px; bottom: -5px;
@@ -85,7 +119,7 @@
             animation: rotate 3s linear infinite;
             filter: blur(2px);
         }
-        
+
         h1 {
             font-size: 2.2rem;
             margin-bottom: 10px;
@@ -93,7 +127,7 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        
+
         .tagline {
             font-size: 1rem;
             color: #ccc;
@@ -103,7 +137,7 @@
             display: inline-block;
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
-        
+
         .websites-list {
             display: flex;
             flex-direction: column;
@@ -111,7 +145,7 @@
             margin-bottom: 50px;
             width: 100%;
         }
-        
+
         .website-item {
             background: rgba(30, 35, 45, 0.6);
             backdrop-filter: blur(10px);
@@ -124,15 +158,22 @@
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             overflow: hidden;
+            opacity: 0;
+            transform: translateY(30px);
         }
-        
+
+        .website-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
         .website-item:hover {
             transform: translateY(-5px);
             background: rgba(40, 45, 60, 0.8);
             border-color: rgba(106, 147, 255, 0.3);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
         }
-        
+
         .website-item::before {
             content: "";
             position: absolute;
@@ -142,7 +183,7 @@
             background: linear-gradient(to bottom, #6a11cb, #2575fc);
             opacity: 0.7;
         }
-        
+
         .website-icon {
             width: 60px;
             height: 60px;
@@ -156,15 +197,15 @@
             flex-shrink: 0;
             transition: 0.4s;
         }
-        
+
         .website-item:hover .website-icon {
             background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
             color: #fff;
             transform: scale(1.1) rotate(-5deg);
         }
-        
+
         .website-content { flex: 1; }
-        
+
         .website-title {
             font-size: 1.2rem;
             margin-bottom: 5px;
@@ -173,14 +214,14 @@
             align-items: center;
             gap: 8px;
         }
-        
+
         .website-description {
             font-size: 0.85rem;
             color: #aaa;
             line-height: 1.5;
             margin-bottom: 12px;
         }
-        
+
         .website-link {
             display: inline-flex;
             align-items: center;
@@ -193,12 +234,12 @@
             transition: 0.3s;
             padding: 5px 0;
         }
-        
+
         .website-link:hover {
             color: #fff;
             padding-right: 10px;
         }
-        
+
         footer {
             text-align: center;
             padding: 20px 0;
@@ -212,34 +253,39 @@
 
         @media (max-width: 600px) {
             .container { padding: 15px; }
-            
+
             .website-item { 
                 flex-direction: column; 
                 text-align: center; 
                 padding: 25px 20px;
             }
-            
+
             .website-item::before { 
                 width: 100%; 
                 height: 4px; 
                 top: 0; 
                 right: 0; 
             }
-            
+
             .website-icon { margin-bottom: 15px; }
-            
+
             .website-title { justify-content: center; }
-            
+
             .website-link:hover { padding-right: 0; letter-spacing: 1px; }
         }
     </style>
+<base target="_blank">
 </head>
 <body>
     <div class="container">
+        <a href="https://hzhack.github.io/hz/" class="back-btn" aria-label="العودة للملف الشخصي">
+            <i class="fas fa-arrow-right"></i> الملف الشخصي
+        </a>
+
         <header>
             <div class="profile-container">
                 <div class="profile-glow"></div>
-                <img src="https://k.top4top.io/p_3452u4opr1.jpg" alt="Hz Bahkali" class="profile-img">
+                <img src="https://k.top4top.io/p_3452u4opr1.jpg" alt="Hz Bahkali" class="profile-img" loading="lazy">
             </div>
             <h1>Hz Bahkali</h1>
             <p class="tagline">أدوات، برمجيات، وحلول تقنية</p>
@@ -248,11 +294,12 @@
         <div class="websites-list">
 
             <div class="website-item">
-                <div class="website-icon"><i class="fas fa-hand-holding-dollar"></i></div> <div class="website-content">
+                <div class="website-icon"><i class="fas fa-hand-holding-dollar"></i></div>
+                <div class="website-content">
                     <h3 class="website-title">VETO</h3>
                     <p class="website-description">برنامج VETO وقف النزيف المالي الان</p>
-                    <a href="https://hzhack.github.io/veto/" class="website-link" target="_blank">
-                     حمل البرنامج <i class="fas fa-arrow-left"></i>
+                    <a href="https://hzhack.github.io/veto/" class="website-link" target="_blank" rel="noopener noreferrer" aria-label="تحميل برنامج VETO">
+                        حمل البرنامج <i class="fas fa-external-link-alt"></i>
                     </a>
                 </div>
             </div>
@@ -262,8 +309,8 @@
                 <div class="website-content">
                     <h3 class="website-title">دكتاتور العمليات</h3>
                     <p class="website-description">برنامج Process Freezer جمد العمليات وكمل لعبك.</p>
-                    <a href="https://hzhack.github.io/pf/" class="website-link" target="_blank">
-                     حمل البرنامج <i class="fas fa-arrow-left"></i>
+                    <a href="https://hzhack.github.io/pf/" class="website-link" target="_blank" rel="noopener noreferrer" aria-label="تحميل برنامج Process Freezer">
+                        حمل البرنامج <i class="fas fa-external-link-alt"></i>
                     </a>
                 </div>
             </div>
@@ -273,8 +320,8 @@
                 <div class="website-content">
                     <h3 class="website-title">فحص الملفات (IPA/APK)</h3>
                     <p class="website-description">أداة PlusInspector Pro لفحص الملفات والتأكد من سلامتها.</p>
-                    <a href="https://hzhack.github.io/apk/" class="website-link" target="_blank">
-                        زيارة الأداة <i class="fas fa-arrow-left"></i>
+                    <a href="https://hzhack.github.io/apk/" class="website-link" target="_blank" rel="noopener noreferrer" aria-label="زيارة أداة PlusInspector Pro">
+                        زيارة الأداة <i class="fas fa-external-link-alt"></i>
                     </a>
                 </div>
             </div>
@@ -284,8 +331,8 @@
                 <div class="website-content">
                     <h3 class="website-title">فحص شامل للجوال</h3>
                     <p class="website-description">تحليل قوة الجهاز، الشبكة، دقة الشاشة والمواصفات.</p>
-                    <a href="https://hzhack.github.io/Info/" class="website-link" target="_blank">
-                        بدء الفحص <i class="fas fa-arrow-left"></i>
+                    <a href="https://hzhack.github.io/Info/" class="website-link" target="_blank" rel="noopener noreferrer" aria-label="بدء فحص الجوال">
+                        بدء الفحص <i class="fas fa-external-link-alt"></i>
                     </a>
                 </div>
             </div>
@@ -295,8 +342,8 @@
                 <div class="website-content">
                     <h3 class="website-title">مولد الإيميلات المؤقتة</h3>
                     <p class="website-description">توليد إيميلات وهمية مربوطة ببريدك الأصلي للخصوصية.</p>
-                    <a href="https://hzhack.github.io/emil/" class="website-link" target="_blank">
-                        إنشاء إيميل <i class="fas fa-arrow-left"></i>
+                    <a href="https://hzhack.github.io/emil/" class="website-link" target="_blank" rel="noopener noreferrer" aria-label="إنشاء إيميل مؤقت">
+                        إنشاء إيميل <i class="fas fa-external-link-alt"></i>
                     </a>
                 </div>
             </div>
@@ -306,8 +353,8 @@
                 <div class="website-content">
                     <h3 class="website-title">مستشار القيمنق (PC)</h3>
                     <p class="website-description">فحص توافق قطع الكمبيوتر واقتراح تطويرات للأداء.</p>
-                    <a href="https://hzhack.github.io/Pc/" class="website-link" target="_blank">
-                        افحص جهازك <i class="fas fa-arrow-left"></i>
+                    <a href="https://hzhack.github.io/Pc/" class="website-link" target="_blank" rel="noopener noreferrer" aria-label="فحص جهاز الكمبيوتر">
+                        افحص جهازك <i class="fas fa-external-link-alt"></i>
                     </a>
                 </div>
             </div>
@@ -317,8 +364,8 @@
                 <div class="website-content">
                     <h3 class="website-title">سناب شات بلس</h3>
                     <p class="website-description">نسخة معدلة بميزات حصرية وتحسينات في الأداء.</p>
-                    <a href="https://hzhack.github.io/snap-hz/" class="website-link" target="_blank">
-                        تحميل النسخة <i class="fas fa-arrow-left"></i>
+                    <a href="https://hzhack.github.io/snap-hz/" class="website-link" target="_blank" rel="noopener noreferrer" aria-label="تحميل سناب شات بلس">
+                        تحميل النسخة <i class="fas fa-external-link-alt"></i>
                     </a>
                 </div>
             </div>
@@ -328,8 +375,8 @@
                 <div class="website-content">
                     <h3 class="website-title">متجر تطبيقات بلس (iOS)</h3>
                     <p class="website-description">مكتبة تطبيقات معدلة ومحسنة لأجهزة الآيفون.</p>
-                    <a href="https://hzhack.github.io/ioss/" class="website-link" target="_blank">
-                        تصفح المتجر <i class="fas fa-arrow-left"></i>
+                    <a href="https://hzhack.github.io/ioss/" class="website-link" target="_blank" rel="noopener noreferrer" aria-label="تصفح متجر iOS">
+                        تصفح المتجر <i class="fas fa-external-link-alt"></i>
                     </a>
                 </div>
             </div>
@@ -339,19 +386,19 @@
                 <div class="website-content">
                     <h3 class="website-title">متجر تطبيقات بلس (Android)</h3>
                     <p class="website-description">أفضل التطبيقات المعدلة والمدفوعة مجاناً للاندرويد.</p>
-                    <a href="https://hzhack.github.io/Android/" class="website-link" target="_blank">
-                        تصفح المتجر <i class="fas fa-arrow-left"></i>
+                    <a href="https://hzhack.github.io/Android/" class="website-link" target="_blank" rel="noopener noreferrer" aria-label="تصفح متجر Android">
+                        تصفح المتجر <i class="fas fa-external-link-alt"></i>
                     </a>
                 </div>
             </div>
-            
+
             <div class="website-item">
                 <div class="website-icon"><i class="fas fa-mosque"></i></div>
                 <div class="website-content">
                     <h3 class="website-title">مواقيت وأذكار</h3>
                     <p class="website-description">مواقيت الصلاة في الدمام مع حصن المسلم.</p>
-                    <a href="https://hzhack.github.io/muslim/" class="website-link" target="_blank">
-                        عرض المواقيت <i class="fas fa-arrow-left"></i>
+                    <a href="https://hzhack.github.io/muslim/" class="website-link" target="_blank" rel="noopener noreferrer" aria-label="عرض مواقيت الصلاة">
+                        عرض المواقيت <i class="fas fa-external-link-alt"></i>
                     </a>
                 </div>
             </div>
@@ -361,8 +408,8 @@
                 <div class="website-content">
                     <h3 class="website-title">فحص دعم الجلبريك</h3>
                     <p class="website-description">تأكد من إمكانية تثبيت الجلبريك على إصدار جهازك.</p>
-                    <a href="https://hzhack.github.io/jil/" class="website-link" target="_blank">
-                        افحص الآن <i class="fas fa-arrow-left"></i>
+                    <a href="https://hzhack.github.io/jil/" class="website-link" target="_blank" rel="noopener noreferrer" aria-label="فحص دعم الجلبريك">
+                        افحص الآن <i class="fas fa-external-link-alt"></i>
                     </a>
                 </div>
             </div>
@@ -373,9 +420,30 @@
             <p>جميع الحقوق محفوظة &copy; <span id="current-year"></span> - Hz Bahkali</p>
         </footer>
     </div>
-    
+
     <script>
         document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // Scroll Reveal Animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                    }, index * 100);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.website-item').forEach(item => {
+            observer.observe(item);
+        });
     </script>
 </body>
 </html>
