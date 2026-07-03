@@ -155,11 +155,11 @@
             align-items: center;
             gap: 20px;
             border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             overflow: hidden;
             opacity: 0;
-            transform: translateY(30px);
+            transform: translateY(20px);
         }
 
         .website-item.visible {
@@ -293,6 +293,18 @@
 
         <div class="websites-list">
 
+            <!-- مشروع VETO HUB الجديد بأيقونة Terminal ثابتة ومجربة -->
+            <div class="website-item">
+                <div class="website-icon"><i class="fas fa-terminal"></i></div>
+                <div class="website-content">
+                    <h3 class="website-title">VETO HUB</h3>
+                    <p class="website-description">مستودع متكامل ومنصة شاملة للمطورين والأدوات البرمجية والأمنية من الصفر.</p>
+                    <a href="https://hz-team.gitlab.io/veto-hub/" class="website-link" target="_blank" rel="noopener noreferrer" aria-label="زيارة VETO HUB">
+                        زيارة المنصة <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
+            </div>
+
             <div class="website-item">
                 <div class="website-icon"><i class="fas fa-hand-holding-dollar"></i></div>
                 <div class="website-content">
@@ -424,10 +436,10 @@
     <script>
         document.getElementById('current-year').textContent = new Date().getFullYear();
 
-        // Scroll Reveal Animation
+        // Scroll Reveal Animation - تم إصلاحه ليناسب جميع أبعاد الشاشات والجوالات بشكل فوري
         const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
+            threshold: 0.01,
+            rootMargin: '0px'
         };
 
         const observer = new IntersectionObserver((entries) => {
@@ -435,14 +447,20 @@
                 if (entry.isIntersecting) {
                     setTimeout(() => {
                         entry.target.classList.add('visible');
-                    }, index * 100);
+                    }, index * 80);
                     observer.unobserve(entry.target);
                 }
             });
         }, observerOptions);
 
-        document.querySelectorAll('.website-item').forEach(item => {
-            observer.observe(item);
+        // تشغيل كود الإظهار مباشرة عند تحميل الصفحة كخطة بديلة لضمان عدم حدوث فراغ
+        document.addEventListener("DOMContentLoaded", () => {
+            const items = document.querySelectorAll('.website-item');
+            if ('IntersectionObserver' in window) {
+                items.forEach(item => observer.observe(item));
+            } else {
+                items.forEach(item => item.classList.add('visible'));
+            }
         });
     </script>
 </body>
